@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emotional Mastery Score — Free Assessment</title>
+<meta name="description" content="Answer 7 questions. Discover your hidden emotional patterns and get a personalized neural blueprint — free.">
+<meta property="og:title" content="What's Your Emotional Mastery Score?">
+<meta property="og:description" content="2-minute assessment. Personalized results. Find out exactly which emotional systems are holding you back.">
+<meta property="og:image" content="https://public-files.gumroad.com/15g47igtxnjfq860u1mde47rktfb">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1714;
+    --ink-soft: #4a4540;
+    --ink-muted: #8a847d;
+    --cream: #faf7f2;
+    --cream-dark: #f0ebe2;
+    --ember: #c4521a;
+    --ember-light: #f0e8df;
+    --ember-dark: #8c3a10;
+    --gold: #b8943a;
+    --gold-light: #f5edda;
+    --success: #2d6a4f;
+    --success-light: #d8f3dc;
+    --progress-bg: #e8e3dc;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  .site-header {
+    background: var(--ink);
+    padding: 14px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-badge {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--ember);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; font-weight: 700;
+    color: var(--cream);
+  }
+  .logo-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero {
+    background: var(--ink);
+    color: var(--cream);
+    text-align: center;
+    padding: 64px 24px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%; transform: translateX(-50%);
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,82,26,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ember);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 18px;
+    max-width: 640px;
+    margin-left: auto; margin-right: auto;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    max-width: 480px;
+    margin: 0 auto 36px;
+    font-weight: 300;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700;
+    color: var(--gold); display: block;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .stat-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    align-self: stretch;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  .progress-wrap { margin-bottom: 36px; }
+  .progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .progress-label {
+    font-size: 12px; color: var(--ink-muted);
+    font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .progress-count {
+    font-size: 12px; color: var(--ink-muted);
+    font-family: 'Playfair Display', serif;
+  }
+  .progress-bar {
+    height: 3px; background: var(--progress-bg);
+    border-radius: 2px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; background: var(--ember);
+    border-radius: 2px;
+    transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .q-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #e8e3dc;
+    padding: 36px 36px 28px;
+    margin-bottom: 20px;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .q-card.exit { opacity: 0; transform: translateY(-12px); }
+  .q-card.enter { opacity: 0; transform: translateY(12px); }
+
+  .q-chapter {
+    font-size: 10px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--ember); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .q-chapter::after {
+    content: ''; flex: 1; height: 1px;
+    background: var(--ember-light);
+  }
+  .q-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600;
+    line-height: 1.45; color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .options-grid { display: flex; flex-direction: column; gap: 10px; }
+  .option-btn {
+    background: var(--cream);
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: left; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14.5px; color: var(--ink-soft);
+    font-weight: 400;
+    transition: all 0.18s ease;
+    display: flex; align-items: center;
+    gap: 12px; line-height: 1.4;
+  }
+  .option-btn:hover { border-color: var(--ember); background: var(--ember-light); color: var(--ink); }
+  .option-btn.selected { border-color: var(--ember); background: var(--ember-light); color: var(--ember-dark); font-weight: 500; }
+  .option-letter {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: white; border: 1px solid #ddd8d0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 500; color: var(--ink-muted);
+    flex-shrink: 0; transition: all 0.18s;
+  }
+  .option-btn.selected .option-letter { background: var(--ember); border-color: var(--ember); color: white; }
+
+  .q-nav { display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px; }
+  .btn-next {
+    background: var(--ink); color: white; border: none;
+    border-radius: 8px; padding: 13px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500; cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    display: flex; align-items: center; gap: 8px;
+    opacity: 0.4; pointer-events: none;
+  }
+  .btn-next.active { opacity: 1; pointer-events: all; }
+  .btn-next.active:hover { background: var(--ember); }
+  .btn-next.active:active { transform: scale(0.98); }
+
+  /* ========== EMAIL GATE ========== */
+  .gate-page { display: none; }
+  .gate-page.visible { display: block; }
+
+  .gate-card {
+    background: var(--ink);
+    border-radius: 20px;
+    padding: 52px 40px 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .gate-card::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,82,26,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .gate-ready-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(196,82,26,0.15);
+    border: 1px solid rgba(196,82,26,0.35);
+    border-radius: 100px;
+    padding: 6px 16px;
+    margin-bottom: 24px;
+  }
+  .gate-ready-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--ember);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .gate-ready-text {
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ember);
+    font-weight: 500;
+  }
+  .gate-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 34px);
+    font-weight: 700; line-height: 1.2;
+    color: var(--cream); margin-bottom: 12px;
+  }
+  .gate-card h2 em { font-style: italic; color: var(--gold); }
+  .gate-sub {
+    font-size: 15px; color: rgba(255,255,255,0.55);
+    font-weight: 300; margin-bottom: 32px;
+    max-width: 380px; margin-left: auto; margin-right: auto;
+  }
+
+  .gate-previews {
+    display: flex; flex-direction: column; gap: 10px;
+    max-width: 360px; margin: 0 auto 32px;
+    text-align: left;
+  }
+  .gate-preview-item {
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .gate-preview-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--ember); margin-top: 7px; flex-shrink: 0;
+  }
+  .gate-preview-text {
+    font-size: 13.5px; color: rgba(255,255,255,0.65);
+    line-height: 1.45;
+  }
+  .gate-preview-text strong { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+  .gate-form { max-width: 400px; margin: 0 auto; }
+  .gate-inputs { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+  .gate-input {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; color: var(--cream);
+    outline: none; width: 100%;
+    transition: border-color 0.18s;
+  }
+  .gate-input::placeholder { color: rgba(255,255,255,0.3); }
+  .gate-input:focus { border-color: rgba(196,82,26,0.6); background: rgba(255,255,255,0.1); }
+
+  .btn-gate {
+    width: 100%;
+    background: var(--ember); color: white; border: none;
+    border-radius: 10px; padding: 16px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500; cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    letter-spacing: 0.02em;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn-gate:hover { background: #a8421a; }
+  .btn-gate:active { transform: scale(0.98); }
+  .btn-gate:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .gate-privacy {
+    font-size: 11.5px; color: rgba(255,255,255,0.3);
+    margin-top: 12px; display: flex; align-items: center;
+    justify-content: center; gap: 6px;
+  }
+  .gate-skip {
+    display: block; margin-top: 16px;
+    font-size: 12px; color: rgba(255,255,255,0.25);
+    cursor: pointer; text-decoration: underline;
+    text-underline-offset: 3px; background: none;
+    border: none; font-family: 'DM Sans', sans-serif;
+    transition: color 0.15s;
+  }
+  .gate-skip:hover { color: rgba(255,255,255,0.45); }
+
+  .gate-error {
+    font-size: 12.5px; color: #f09595;
+    margin-top: 8px; display: none;
+  }
+  .gate-error.visible { display: block; }
+
+  /* ========== RESULTS ========== */
+  .results-page { display: none; }
+  .results-page.visible { display: block; }
+
+  .score-hero {
+    text-align: center;
+    padding: 48px 24px 40px;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #e8e3dc;
+    margin-bottom: 20px;
+  }
+  .score-label {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.2em; color: var(--ink-muted); margin-bottom: 16px;
+  }
+  .score-ring {
+    width: 130px; height: 130px; border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .score-ring svg { position: absolute; top: 0; left: 0; transform: rotate(-90deg); }
+  .score-ring circle.bg { fill: none; stroke: var(--cream-dark); stroke-width: 6; }
+  .score-ring circle.fill { fill: none; stroke-width: 6; stroke-linecap: round; transition: stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1); }
+  .score-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px; font-weight: 700;
+    color: var(--ink); z-index: 1; position: relative;
+  }
+  .score-pct { font-size: 16px; color: var(--ink-muted); }
+  .score-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700; margin-bottom: 10px;
+  }
+  .score-desc {
+    font-size: 15px; color: var(--ink-soft);
+    max-width: 440px; margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Share section */
+  .share-row {
+    display: flex; gap: 10px; justify-content: center;
+    margin-top: 24px; flex-wrap: wrap;
+  }
+  .btn-share {
+    display: inline-flex; align-items: center; gap: 8px;
+    border-radius: 8px; padding: 10px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500; cursor: pointer;
+    transition: all 0.15s; border: none;
+    text-decoration: none;
+  }
+  .btn-share-x {
+    background: var(--ink); color: white;
+  }
+  .btn-share-x:hover { background: #333; }
+  .btn-share-copy {
+    background: var(--cream-dark); color: var(--ink-soft);
+    border: 1px solid #e8e3dc;
+  }
+  .btn-share-copy:hover { background: #e8e3dc; }
+  .btn-share svg { flex-shrink: 0; }
+
+  .share-note {
+    font-size: 11px; color: var(--ink-muted);
+    text-align: center; margin-top: 8px;
+  }
+
+  .breakdown-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px; margin-bottom: 20px;
+  }
+  .bd-card {
+    background: white; border: 1px solid #e8e3dc;
+    border-radius: 12px; padding: 18px 16px;
+  }
+  .bd-chapter {
+    font-size: 10px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--ember); margin-bottom: 8px;
+  }
+  .bd-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px; font-weight: 600;
+    color: var(--ink); margin-bottom: 10px; line-height: 1.3;
+  }
+  .bd-bar { height: 4px; background: var(--cream-dark); border-radius: 2px; overflow: hidden; margin-bottom: 6px; }
+  .bd-fill { height: 100%; border-radius: 2px; transition: width 1s cubic-bezier(0.4,0,0.2,1); }
+  .bd-score { font-size: 12px; color: var(--ink-muted); font-weight: 500; }
+
+  .insights-card {
+    background: var(--cream); border: 1px solid #e8e3dc;
+    border-radius: 16px; padding: 28px; margin-bottom: 20px;
+  }
+  .insights-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 600;
+    margin-bottom: 20px; color: var(--ink);
+  }
+  .insight-item {
+    display: flex; gap: 14px; padding: 14px 0;
+    border-bottom: 1px solid #e8e3dc; align-items: flex-start;
+  }
+  .insight-item:last-child { border-bottom: none; }
+  .insight-icon {
+    width: 34px; height: 34px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 15px;
+  }
+  .insight-icon.strength { background: var(--success-light); color: var(--success); }
+  .insight-icon.gap { background: var(--ember-light); color: var(--ember); }
+  .insight-label {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.15em; font-weight: 500;
+    color: var(--ink-muted); margin-bottom: 3px;
+  }
+  .insight-text { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+  /* CTA */
+  .cta-card {
+    background: var(--ink); color: var(--cream);
+    border-radius: 16px; padding: 40px 36px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-card::before {
+    content: '';
+    position: absolute; bottom: -80px; right: -80px;
+    width: 260px; height: 260px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,82,26,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-eyebrow {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.2em; color: var(--ember);
+    font-weight: 500; margin-bottom: 14px;
+  }
+  .cta-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 700;
+    line-height: 1.25; margin-bottom: 14px;
+  }
+  .cta-card h2 em { font-style: italic; color: var(--gold); }
+  .cta-card p {
+    font-size: 14.5px; color: rgba(255,255,255,0.6);
+    max-width: 400px; margin: 0 auto 28px;
+    line-height: 1.7; font-weight: 300;
+  }
+  .chapters-list {
+    display: flex; flex-direction: column; gap: 10px;
+    max-width: 380px; margin: 0 auto 32px; text-align: left;
+  }
+  .chapter-item { display: flex; gap: 10px; align-items: flex-start; }
+  .chapter-check {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: rgba(196,82,26,0.3); border: 1px solid var(--ember);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .chapter-check svg { width: 9px; height: 9px; }
+  .chapter-text { font-size: 13.5px; color: rgba(255,255,255,0.75); line-height: 1.4; }
+  .chapter-text strong { color: white; font-weight: 500; }
+  .cta-price {
+    display: flex; align-items: baseline;
+    justify-content: center; gap: 10px; margin-bottom: 18px;
+  }
+  .price-main { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 700; color: var(--gold); }
+  .price-currency { font-size: 20px; color: var(--gold); font-family: 'Playfair Display', serif; }
+  .price-old { font-size: 16px; color: rgba(255,255,255,0.3); text-decoration: line-through; }
+  .btn-cta {
+    display: inline-block; background: var(--ember); color: white;
+    border: none; border-radius: 10px; padding: 16px 40px;
+    font-family: 'DM Sans', sans-serif; font-size: 15px;
+    font-weight: 500; cursor: pointer; text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+    letter-spacing: 0.02em; margin-bottom: 14px;
+  }
+  .btn-cta:hover { background: #a8421a; }
+  .btn-cta:active { transform: scale(0.98); }
+  .cta-guarantee { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 6px; }
+
+  /* Retake button */
+  .btn-retake {
+    display: block; margin: 24px auto 0;
+    background: none; border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; color: var(--ink-muted);
+    cursor: pointer; text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.15s;
+  }
+  .btn-retake:hover { color: var(--ember); }
+
+  .site-footer {
+    text-align: center; padding: 28px 24px;
+    font-size: 12px; color: var(--ink-muted);
+    border-top: 1px solid #e8e3dc;
+  }
+
+  .quiz-page { display: block; }
+  .quiz-page.hidden { display: none; }
+
+  /* Copied toast */
+  .copy-toast {
+    position: fixed; bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink); color: white;
+    padding: 10px 20px; border-radius: 8px;
+    font-size: 13px; font-weight: 500;
+    opacity: 0; transition: all 0.3s;
+    pointer-events: none; z-index: 999;
+  }
+  .copy-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 480px) {
+    .hero { padding: 48px 20px 56px; }
+    .q-card { padding: 24px 20px 20px; }
+    .q-text { font-size: 17px; }
+    .hero-stats { gap: 20px; }
+    .stat-divider { display: none; }
+    .cta-card { padding: 32px 20px; }
+    .gate-card { padding: 36px 20px 32px; }
+    .breakdown-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-badge">E</div>
+  <span class="logo-text">The Emotional Mastery System</span>
+</header>
+
+<div class="hero" id="heroSection">
+  <p class="hero-eyebrow">Free 2-Minute Assessment</p>
+  <h1>What's Your <em>Emotional</em> Mastery Score?</h1>
+  <p class="hero-sub">Answer 7 questions. Discover your hidden emotional patterns — and get a personalized neural blueprint.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">7</span>
+      <span class="stat-label">Questions</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">2min</span>
+      <span class="stat-label">To complete</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">Free</span>
+      <span class="stat-label">Instant results</span>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ PAGE -->
+<div class="quiz-page" id="quizPage">
+  <div class="container">
+    <div class="progress-wrap">
+      <div class="progress-top">
+        <span class="progress-label">Your Progress</span>
+        <span class="progress-count" id="progressCount">1 of 7</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 14%"></div>
+      </div>
+    </div>
+    <div class="q-card" id="qCard">
+      <div class="q-chapter" id="qChapter">Chapter 1 · The Trigger Matrix</div>
+      <p class="q-text" id="qText"></p>
+      <div class="options-grid" id="optionsGrid"></div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-next" id="btnNext">
+        Next question <span style="font-size:16px">→</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- EMAIL GATE PAGE -->
+<div class="gate-page" id="gatePage">
+  <div class="container">
+    <div class="gate-card">
+      <div class="gate-ready-badge">
+        <div class="gate-ready-dot"></div>
+        <span class="gate-ready-text">Your results are ready</span>
+      </div>
+      <h2>Unlock Your <em>Personal</em><br>Emotional Blueprint</h2>
+      <p class="gate-sub">Enter your email to receive your full score report — plus a free breakdown of your exact growth areas.</p>
+
+      <div class="gate-previews">
+        <div class="gate-preview-item">
+          <div class="gate-preview-dot"></div>
+          <div class="gate-preview-text"><strong>Your Emotional Mastery Score</strong> across all 7 neural systems</div>
+        </div>
+        <div class="gate-preview-item">
+          <div class="gate-preview-dot"></div>
+          <div class="gate-preview-text"><strong>Your personal strengths</strong> — the patterns already working for you</div>
+        </div>
+        <div class="gate-preview-item">
+          <div class="gate-preview-dot"></div>
+          <div class="gate-preview-text"><strong>Your growth gaps</strong> — the exact chapters that will move the needle most</div>
+        </div>
+        <div class="gate-preview-item">
+          <div class="gate-preview-dot"></div>
+          <div class="gate-preview-text"><strong>Weekly insights</strong> on emotional mastery delivered to your inbox</div>
+        </div>
+      </div>
+
+      <div class="gate-form">
+        <div class="gate-inputs">
+          <input type="text" class="gate-input" id="gateFirstName" placeholder="First name (optional)" autocomplete="given-name">
+          <input type="email" class="gate-input" id="gateEmail" placeholder="Your best email address *" autocomplete="email" required>
+        </div>
+        <div class="gate-error" id="gateError">Please enter a valid email address.</div>
+        <button class="btn-gate" id="btnGate">
+          <span id="btnGateText">Reveal My Score →</span>
+        </button>
+        <p class="gate-privacy">
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none" style="opacity:0.5"><rect x="1" y="5" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 5V3.5a2 2 0 0 1 4 0V5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Zero spam. Unsubscribe anytime. Your data stays private.
+        </p>
+        <button class="gate-skip" id="btnSkip">Skip — just show my results</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS PAGE -->
+<div class="results-page" id="resultsPage">
+  <div class="container">
+
+    <div class="score-hero" id="scoreHero">
+      <p class="score-label">Your Emotional Mastery Score</p>
+      <div class="score-ring" id="scoreRing">
+        <svg viewBox="0 0 130 130" width="130" height="130">
+          <circle class="bg" cx="65" cy="65" r="57"/>
+          <circle class="fill" id="ringFill" cx="65" cy="65" r="57"
+            stroke-dasharray="358.1" stroke-dashoffset="358.1"/>
+        </svg>
+        <div class="score-num" id="scoreNum">0<span class="score-pct">%</span></div>
+      </div>
+      <h2 class="score-title" id="scoreTitle">Loading...</h2>
+      <p class="score-desc" id="scoreDesc"></p>
+
+      <div class="share-row">
+        <button class="btn-share btn-share-x" id="btnShareX">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.738l7.726-8.84L2.062 2.25H8.14l4.27 5.648 5.834-5.648Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Share Your Score
+        </button>
+        <button class="btn-share btn-share-copy" id="btnCopy">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Link
+        </button>
+      </div>
+      <p class="share-note">Challenge a friend to take the test</p>
+    </div>
+
+    <div class="breakdown-grid" id="breakdownGrid"></div>
+
+    <div class="insights-card" id="insightsCard">
+      <h3 class="insights-title">Your Personal Insight Report</h3>
+      <div id="insightsList"></div>
+    </div>
+
+    <div class="cta-card">
+      <p class="cta-eyebrow">The Complete System Awaits</p>
+      <h2 id="ctaHeadline">Turn Your Score Into <em>Unshakable</em> Emotional Control</h2>
+      <p id="ctaBody">You've seen your patterns. Now get the exact 7-chapter framework — built on neuroscience, not motivation — to rewire them permanently.</p>
+
+      <div class="chapters-list">
+        <div class="chapter-item">
+          <div class="chapter-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#c4521a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span class="chapter-text"><strong>The Trigger Matrix</strong> — decode your hidden emotional blueprint</span>
+        </div>
+        <div class="chapter-item">
+          <div class="chapter-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#c4521a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span class="chapter-text"><strong>The Control Loop</strong> — regain power in under 8 seconds</span>
+        </div>
+        <div class="chapter-item">
+          <div class="chapter-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#c4521a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span class="chapter-text"><strong>State Shift Protocol</strong> — flip your mood in 90 seconds</span>
+        </div>
+        <div class="chapter-item">
+          <div class="chapter-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#c4521a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span class="chapter-text"><strong>Emotional Armor</strong> + <strong>The Stoic Upgrade</strong></span>
+        </div>
+        <div class="chapter-item">
+          <div class="chapter-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#c4521a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span class="chapter-text"><strong>Neural Recode System</strong> — rewire your brain in 30 days</span>
+        </div>
+      </div>
+
+      <div class="cta-price">
+        <span class="price-currency">$</span>
+        <span class="price-main">17</span>
+        <span class="price-old">$34</span>
+      </div>
+
+      <a href="https://muddassir06.gumroad.com/l/ebook" target="_blank" class="btn-cta" id="ctaBtn">
+        Get the Full System →
+      </a>
+      <p class="cta-guarantee">Instant digital download · 63 pages · 7 complete frameworks</p>
+    </div>
+
+    <button class="btn-retake" id="btnRetake">↺ Retake the assessment</button>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  © 2026 The Emotional Mastery System &nbsp;·&nbsp; Built for those who choose command over chaos
+</footer>
+
+<div class="copy-toast" id="copyToast">Link copied to clipboard ✓</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<script>
+
+// ── CONFIGURATION ──────────────────────────────────────────
+// Replace with your ConvertKit Form ID (from your ConvertKit dashboard → Forms → Form Settings)
+const CONVERTKIT_FORM_ID = 'YOUR_CONVERTKIT_FORM_ID';
+
+// Replace with the live URL where you host this page
+const QUIZ_URL = 'https://YOUR-QUIZ-URL.com';
+// ───────────────────────────────────────────────────────────
+
+const questions = [
+  {
+    chapter: "Chapter 1 · The Trigger Matrix",
+    text: "When someone sends you a tense message, what happens in your body before you've even read it fully?",
+    dim: "trigger",
+    options: [
+      { label: "My heart rate stays steady — I stay curious", score: 4 },
+      { label: "Mild unease, but I pause before reacting", score: 3 },
+      { label: "My chest tightens and I start forming responses instantly", score: 2 },
+      { label: "I feel physically activated — anger, anxiety, or dread hits fast", score: 1 }
+    ]
+  },
+  {
+    chapter: "Chapter 2 · The Control Loop",
+    text: "After a conflict or criticism, how long does the emotional replay typically last?",
+    dim: "control",
+    options: [
+      { label: "I process it and release it within minutes", score: 4 },
+      { label: "An hour or so, then I redirect my focus", score: 3 },
+      { label: "Half the day — I keep rehashing the scene", score: 2 },
+      { label: "Days sometimes. It circles back even when I try to stop it", score: 1 }
+    ]
+  },
+  {
+    chapter: "Chapter 3 · The State Shift Protocol",
+    text: "How often can you deliberately shift your mood when it's working against you?",
+    dim: "stateshift",
+    options: [
+      { label: "Reliably — I have rituals that work consistently", score: 4 },
+      { label: "Sometimes — it depends on how bad the mood is", score: 3 },
+      { label: "Rarely — I mostly wait for it to pass on its own", score: 2 },
+      { label: "Almost never — moods feel like weather that just happens to me", score: 1 }
+    ]
+  },
+  {
+    chapter: "Chapter 4 · Emotional Armor",
+    text: "When someone criticizes you publicly or dismisses your idea, your default internal response is:",
+    dim: "armor",
+    options: [
+      { label: "Curiosity — 'Is there something useful here?'", score: 4 },
+      { label: "Mild sting, then I assess before deciding how to respond", score: 3 },
+      { label: "Defensive — I mentally argue back or shrink inward", score: 2 },
+      { label: "Intense — I either shut down or feel a strong urge to retaliate", score: 1 }
+    ]
+  },
+  {
+    chapter: "Chapter 5 · The Stoic Upgrade",
+    text: "When circumstances outside your control go wrong, how much mental energy do you spend on them?",
+    dim: "stoic",
+    options: [
+      { label: "Minimal — I quickly redirect to what I can actually do", score: 4 },
+      { label: "Some worry, but I catch myself and refocus", score: 3 },
+      { label: "A lot — the injustice or frustration stays present all day", score: 2 },
+      { label: "Almost all of it — I find it very hard to let go of things I can't fix", score: 1 }
+    ]
+  },
+  {
+    chapter: "Chapter 6 · Fire & Flow",
+    text: "When you feel strong negative emotions like anger or frustration, what usually happens to your output?",
+    dim: "fire",
+    options: [
+      { label: "I channel it — I often create or work better from that energy", score: 4 },
+      { label: "I'm slightly less effective, but I recover fairly quickly", score: 3 },
+      { label: "My focus drops significantly and tasks take twice as long", score: 2 },
+      { label: "I shut down, lash out, or spiral — work stops entirely", score: 1 }
+    ]
+  },
+  {
+    chapter: "Chapter 7 · Neural Recode",
+    text: "How consistent is your practice of any emotional regulation habit (journaling, breathing, reflection, etc.)?",
+    dim: "neural",
+    options: [
+      { label: "Daily — it's a core part of how I operate", score: 4 },
+      { label: "A few times a week, with occasional gaps", score: 3 },
+      { label: "Occasionally, mostly when I'm already struggling", score: 2 },
+      { label: "Rarely or never — I don't really have a system", score: 1 }
+    ]
+  }
+];
+
+const dimNames = {
+  trigger: "Trigger Awareness", control: "Loop Control",
+  stateshift: "State Shifting", armor: "Emotional Armor",
+  stoic: "Stoic Precision", fire: "Fire & Flow", neural: "Neural Habits"
+};
+
+const dimColors = {
+  trigger: "#c4521a", control: "#2d6a4f", stateshift: "#b8943a",
+  armor: "#534AB7", stoic: "#0F6E56", fire: "#D85A30", neural: "#185FA5"
+};
+
+let current = 0;
+let answers = {};
+let selectedScore = null;
+let finalPct = 0;
+let finalTier = '';
+
+const qChapter = document.getElementById('qChapter');
+const qText = document.getElementById('qText');
+const optionsGrid = document.getElementById('optionsGrid');
+const btnNext = document.getElementById('btnNext');
+const progressFill = document.getElementById('progressFill');
+const progressCount = document.getElementById('progressCount');
+
+function renderQuestion(idx) {
+  const q = questions[idx];
+  qChapter.textContent = q.chapter;
+  qText.textContent = q.text;
+  optionsGrid.innerHTML = '';
+  selectedScore = null;
+  btnNext.classList.remove('active');
+
+  const letters = ['A','B','C','D'];
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = `<span class="option-letter">${letters[i]}</span><span>${opt.label}</span>`;
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedScore = opt.score;
+      btnNext.classList.add('active');
+    });
+    optionsGrid.appendChild(btn);
+  });
+
+  const pct = ((idx + 1) / questions.length) * 100;
+  progressFill.style.width = pct + '%';
+  progressCount.textContent = `${idx + 1} of ${questions.length}`;
+}
+
+btnNext.addEventListener('click', () => {
+  if (selectedScore === null) return;
+  const q = questions[current];
+  answers[q.dim] = selectedScore;
+
+  if (current < questions.length - 1) {
+    const card = document.getElementById('qCard');
+    card.classList.add('exit');
+    setTimeout(() => {
+      current++;
+      renderQuestion(current);
+      card.classList.remove('exit');
+      card.classList.add('enter');
+      setTimeout(() => card.classList.remove('enter'), 50);
+    }, 250);
+  } else {
+    showGate();
+  }
+});
+
+renderQuestion(0);
+
+// ── EMAIL GATE ──────────────────────────────────────────────
+function showGate() {
+  document.getElementById('quizPage').classList.add('hidden');
+  document.getElementById('heroSection').style.display = 'none';
+  document.getElementById('gatePage').classList.add('visible');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+async function submitEmail(email, firstName) {
+  if (!CONVERTKIT_FORM_ID || CONVERTKIT_FORM_ID === 'YOUR_CONVERTKIT_FORM_ID') {
+    return true;
+  }
+  try {
+    const payload = { email_address: email, first_name: firstName || '' };
+    await fetch(`https://app.convertkit.com/forms/${CONVERTKIT_FORM_ID}/subscriptions`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    return true;
+  } catch (e) {
+    return true;
+  }
+}
+
+document.getElementById('btnGate').addEventListener('click', async () => {
+  const email = document.getElementById('gateEmail').value.trim();
+  const firstName = document.getElementById('gateFirstName').value.trim();
+  const errorEl = document.getElementById('gateError');
+  const btn = document.getElementById('btnGate');
+  const btnText = document.getElementById('btnGateText');
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    errorEl.classList.add('visible');
+    document.getElementById('gateEmail').focus();
+    return;
+  }
+
+  errorEl.classList.remove('visible');
+  btn.disabled = true;
+  btnText.textContent = 'Loading your results…';
+
+  await submitEmail(email, firstName);
+  showResults();
+});
+
+document.getElementById('btnSkip').addEventListener('click', () => {
+  showResults();
+});
+
+document.getElementById('gateEmail').addEventListener('input', () => {
+  document.getElementById('gateError').classList.remove('visible');
+});
+
+// ── RESULTS ────────────────────────────────────────────────
+function showResults() {
+  document.getElementById('gatePage').classList.remove('visible');
+  document.getElementById('resultsPage').classList.add('visible');
+
+  const total = Object.values(answers).reduce((a, b) => a + b, 0);
+  const maxScore = questions.length * 4;
+  finalPct = Math.round((total / maxScore) * 100);
+
+  let tier, desc, ctaHeadline, ctaBody;
+  if (finalPct >= 80) {
+    tier = "The Composed Commander";
+    desc = "You operate with rare emotional precision. Your nervous system has already learned to pause before reacting. The full system will deepen what's working and eliminate the last pockets of reactivity.";
+    ctaHeadline = 'Sharpen the <em>Edge</em> You Already Have';
+    ctaBody = "You've built something real. The full system will close the last gaps, automate what's still manual, and give you language for what you already feel intuitively.";
+  } else if (finalPct >= 60) {
+    tier = "The Emerging Architect";
+    desc = "You have genuine emotional awareness — but the wiring isn't fully automated yet. In high-pressure moments, old patterns still hijack you. The system will close those gaps permanently.";
+    ctaHeadline = 'Close the Gap Between <em>Awareness</em> and Automatic Control';
+    ctaBody = "You can see your patterns clearly. The next step is automating the response — so the right reaction happens before you even think about it.";
+  } else if (finalPct >= 40) {
+    tier = "The Reactive Rebuilder";
+    desc = "Your emotions are running patterns set years ago. You feel them, but they still control more of your day than you'd like. You're exactly who this system was built for.";
+    ctaHeadline = 'Stop Reacting. Start <em>Engineering</em> Your Responses.';
+    ctaBody = "Your patterns are running on old code. This system goes to the root — 7 frameworks that rewire how you respond, not just how you think about responding.";
+  } else {
+    tier = "The Storm Seeker";
+    desc = "You're caught in loops that feel unavoidable. Emotion hits and the body takes over before the mind can respond. That's not a flaw — it's an untrained nervous system. This changes now.";
+    ctaHeadline = 'Your Nervous System Can Be <em>Retrained.</em> Start Here.';
+    ctaBody = "The loops you're stuck in aren't character flaws. They're untrained neural patterns. This system was built precisely for where you are right now.";
+  }
+
+  finalTier = tier;
+  document.getElementById('scoreTitle').textContent = tier;
+  document.getElementById('scoreDesc').textContent = desc;
+  document.getElementById('ctaHeadline').innerHTML = ctaHeadline;
+  document.getElementById('ctaBody').textContent = ctaBody;
+
+  let color;
+  if (finalPct >= 80) color = "#2d6a4f";
+  else if (finalPct >= 60) color = "#b8943a";
+  else if (finalPct >= 40) color = "#c4521a";
+  else color = "#a32d2d";
+
+  const ringFill = document.getElementById('ringFill');
+  ringFill.style.stroke = color;
+
+  const circumference = 358.1;
+  const duration = 1400;
+  const startTime = performance.now();
+  const scoreNumEl = document.getElementById('scoreNum');
+
+  function animate(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const displayed = Math.round(eased * finalPct);
+    scoreNumEl.innerHTML = `${displayed}<span class="score-pct">%</span>`;
+    ringFill.style.strokeDashoffset = circumference - (displayed / 100) * circumference;
+    if (progress < 1) requestAnimationFrame(animate);
+    else if (finalPct >= 60) launchConfetti();
+  }
+  requestAnimationFrame(animate);
+
+  // Breakdown bars
+  const grid = document.getElementById('breakdownGrid');
+  grid.innerHTML = '';
+  questions.forEach((q, idx) => {
+    const score = answers[q.dim];
+    const scorePct = (score / 4) * 100;
+    const card = document.createElement('div');
+    card.className = 'bd-card';
+    card.innerHTML = `
+      <div class="bd-chapter">Ch.${idx + 1}</div>
+      <div class="bd-name">${dimNames[q.dim]}</div>
+      <div class="bd-bar"><div class="bd-fill" style="width:0%; background:${dimColors[q.dim]};" data-target="${scorePct}"></div></div>
+      <div class="bd-score">${score}/4</div>
+    `;
+    grid.appendChild(card);
+  });
+  setTimeout(() => {
+    document.querySelectorAll('.bd-fill').forEach(el => {
+      el.style.width = el.dataset.target + '%';
+    });
+  }, 400);
+
+  // Insights
+  const sorted = Object.entries(answers).sort((a, b) => b[1] - a[1]);
+  const strengths = sorted.filter(([, v]) => v >= 3).slice(0, 2);
+  const gaps = sorted.filter(([, v]) => v <= 2).sort((a, b) => a[1] - b[1]).slice(0, 2);
+
+  const strengthInsights = {
+    trigger: "You notice your triggers before they escalate — this is the foundation of all emotional mastery.",
+    control: "You break the replay loop faster than most — you've already developed a key mental habit.",
+    stateshift: "You can manufacture calm — this is a skill most people never develop.",
+    armor: "Criticism doesn't penetrate your core — you've built real psychological resilience.",
+    stoic: "You redirect attention to what you can control — a rare and powerful mental discipline.",
+    fire: "You convert emotional energy into output — this is what separates masters from the reactive.",
+    neural: "Your daily habits are already rewiring your brain — consistency is your edge."
+  };
+
+  const gapInsights = {
+    trigger: "Your triggers still fire before you can intercept them. Chapter 1's Decode-to-Disarm framework changes this in days.",
+    control: "Emotional replays are draining you. Chapter 2's 8-second interrupt breaks this loop permanently.",
+    stateshift: "You're still waiting for moods to shift on their own. Chapter 3 teaches you to manufacture any state in 90 seconds.",
+    armor: "Criticism still penetrates too deep. Chapter 4 builds the psychological buffer between stimulus and identity.",
+    stoic: "Uncontrollable outcomes still steal your mental bandwidth. Chapter 5's Control Zone framework eliminates this drain.",
+    fire: "Strong emotion is collapsing your output instead of powering it. Chapter 6 rewires this relationship entirely.",
+    neural: "Without a daily practice, the old wiring keeps winning. Chapter 7's 5-minute Recode Protocol is your entry point."
+  };
+
+  const list = document.getElementById('insightsList');
+  list.innerHTML = '';
+  strengths.forEach(([dim]) => {
+    list.innerHTML += `
+      <div class="insight-item">
+        <div class="insight-icon strength">✓</div>
+        <div class="insight-body">
+          <div class="insight-label">Your Strength · ${dimNames[dim]}</div>
+          <div class="insight-text">${strengthInsights[dim]}</div>
+        </div>
+      </div>`;
+  });
+  gaps.forEach(([dim]) => {
+    list.innerHTML += `
+      <div class="insight-item">
+        <div class="insight-icon gap">!</div>
+        <div class="insight-body">
+          <div class="insight-label">Growth Area · ${dimNames[dim]}</div>
+          <div class="insight-text">${gapInsights[dim]}</div>
+        </div>
+      </div>`;
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── CONFETTI ────────────────────────────────────────────────
+function launchConfetti() {
+  if (typeof confetti === 'undefined') return;
+  confetti({ particleCount: 80, spread: 60, origin: { y: 0.4 }, colors: ['#c4521a','#b8943a','#faf7f2','#2d6a4f'] });
+  setTimeout(() => confetti({ particleCount: 40, spread: 80, origin: { y: 0.35 }, colors: ['#c4521a','#b8943a'] }), 400);
+}
+
+// ── SHARE BUTTONS ───────────────────────────────────────────
+document.getElementById('btnShareX').addEventListener('click', () => {
+  const tweet = `I just scored ${finalPct}% on my Emotional Mastery Assessment.\n\nMy type: "${finalTier}"\n\nFind out yours (free, 2 min): ${QUIZ_URL}`;
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`, '_blank');
+});
+
+document.getElementById('btnCopy').addEventListener('click', () => {
+  const url = QUIZ_URL !== 'https://YOUR-QUIZ-URL.com' ? QUIZ_URL : window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    const toast = document.getElementById('copyToast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  });
+});
+
+// ── RETAKE ──────────────────────────────────────────────────
+document.getElementById('btnRetake').addEventListener('click', () => {
+  current = 0; answers = {}; selectedScore = null;
+  document.getElementById('resultsPage').classList.remove('visible');
+  document.getElementById('quizPage').classList.remove('hidden');
+  document.getElementById('heroSection').style.display = '';
+  renderQuestion(0);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+</script>
+</body>
+</html>
